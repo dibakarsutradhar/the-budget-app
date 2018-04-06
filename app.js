@@ -1,3 +1,7 @@
+/*
+	********** DIBAKAR SUTRA DHAR **********
+	********** CONTACT@DIBAKAR.ME **********
+*/
 
 // BUDGET CONTROLLER
 var budgetController = (function() {
@@ -26,6 +30,27 @@ var budgetController = (function() {
 		}
 	};
 
+	return {
+		addItem: function(type, des, val) {
+			var newItem, ID;
+
+			// Create new ID
+			ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+
+			// Create new item based on 'Inc' or 'Exp' type
+			if(type === 'exp') {
+				newItem = new Expense(ID, des, val);
+			} else if(type === 'inc') {
+				newItem = new Income(ID, des, val);
+			}
+
+			// Push it into our data structure
+			data.allItems[type].push(newItem);
+
+			// Return the element
+			return newItem;
+		}
+	};
 
 })();
 
@@ -77,7 +102,8 @@ var controller = (function(budgetCtrl, UICtrl){
 		var input = UICtrl.getInput();
 
 		// 2. Add the item to the budget controller
-
+		budgetCtrl.addItem(input.type, input.description, input.value);
+		
 		// 3. Add the item to the UI
 
 		// 4. Calculate the budget
