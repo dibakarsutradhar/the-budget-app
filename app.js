@@ -109,6 +109,14 @@ var UIController = (function() {
 			document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 		},
 
+		clearFields: function() {
+			var fields, fieldsArr;
+
+			fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
+
+			fieldsArr = Array.protoype.slice.call(fields);
+		},
+
 		getDOMstrings: function() {
 			return DOMstrings;
 		}
