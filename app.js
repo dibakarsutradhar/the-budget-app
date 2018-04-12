@@ -18,6 +18,15 @@ var budgetController = (function() {
 		this.value = value;
 	};
 
+	var calculateTotal = function(type) {
+		var sum = 0;
+		data.allItems[type].forEach(function(cur) {
+			sum += cur.value;
+		});
+
+		data.totals[type] = sum;
+	};
+
 	var data = {
 		allItems: {
 			exp: [],
@@ -54,6 +63,18 @@ var budgetController = (function() {
 
 			// Return the element
 			return newItem;
+		},
+
+		calculateBudget: function() {
+
+			// 1. Calculate total income and expenses
+			calculateTotal('exp');
+			calculateTotal('inc');
+
+			// 2. Calculate the budget: income - expenses
+
+			// 3. Calculate the percentage of income that we spent
+
 		},
 
 		testing: function() {
