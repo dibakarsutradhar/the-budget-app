@@ -72,6 +72,10 @@ body {
 	text-transform: uppercase;
 }
 
+.budget__income {
+	background-color: #28B9B5;
+}
+
 .budget__expenses {
 	background-color: #FF5049;
 }
